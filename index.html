@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video background</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            position: absolute;
+            color: white;
+            width: 90%;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: rgb(0, 0, 0, .5);
+        }
+
+        .switch_btn {
+            position: absolute;
+            bottom: 30px;
+            left: 2%;
+            border: none;
+            border-radius: 5px;
+            padding: 2px 5px;
+            background-color: white;
+            color: rgb(67, 122, 243);
+            cursor: pointer;
+        }
+
+        .blue {
+            background-color: rgb(67, 122, 243);
+            border-radius: 5px;
+            padding: 1px;
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <video class="background" muted autoplay loop>
+            <source src="./asset/video/network.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <h1>Video Project</h1>
+        <button class="switch_btn">
+            <span class="btn-1 play blue">play</span>
+            <span class="btn-2 pause">pause</span>
+        </button>
+    </header>
+    <script>
+
+        let btn1 = document.querySelector(".btn-1")
+        let btn2 = document.querySelector(".btn-2")
+        let video = document.querySelector(".background")
+
+
+        btn2.addEventListener("click", () => {
+            if (btn2.classList.contains("pause")) {
+                btn2.classList.add("blue")
+                video.pause();
+                btn1.classList.remove("blue")
+            }
+        })
+
+        btn1.addEventListener("click", () => {
+            if (btn1.classList.contains("play")) {
+                btn1.classList.add("blue")
+                video.play();
+                btn2.classList.remove("blue")
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
